@@ -1,6 +1,6 @@
 import './App.css';
-import photo from './photos/sabri.jpg'
 import React, { Component} from 'react'
+import Card from './Card';
 
 export default class App extends Component {
   
@@ -22,29 +22,15 @@ export default class App extends Component {
   change() {
     this.setState({show:!this.state.show})
   }
-  componentDidMount(){
-    setInterval(()=>{
-      this.setState({count:this.state.count+1})
-    },1000)
-  }
+
 
   render() {
     return (
       <>
-      {this.state.show? <div className='person'>
-      <img src={photo} alt='sabri'></img>
-      <h2>{this.state.person.fullName}</h2>  
-      <h4>{this.state.person.bio}</h4>
-      <h4>{this.state.person.profession}</h4>
-      </div>:null}
-      
-      
-      <button onClick={this.change} style={this.state.show? {backgroundColor:'#f44336'}:{backgroundColor:'#4CAF50'}}>{this.state.show? "hide":"show" }</button>
+     {this.state.show? <Card></Card> : null}
+     <button onClick={this.change} style={this.state.show? {backgroundColor:'#f44336'}:{backgroundColor:'#4CAF50'}}>{this.state.show? "hide":"show" }</button>
       <br></br>
-      <h2>time after mount:</h2>
-      <h2>{`${this.state.count} sec`}</h2>
       
-   
       </>
     )
   }
